@@ -1,0 +1,34 @@
+<h1>Articals#index</h1>
+<p>Find me in app/views/articals/index.html.erb</p>
+<h1>Articles</h1>
+
+<table>
+<thead>
+<tr>
+<th>Title</th>
+
+
+<th>Body</th>
+
+
+<th colspan = "3">Action</th>
+</tr>
+
+</thead>
+<tbody>
+ <% @ariticals.each do |article| %>
+   <tr>
+   <td> <%= article.title %></td>
+   <td> <%= article.body %></td>
+   <td><%= link_to "View", article %></td>
+   <td><%= link_to "Eidt", edit_artical_path(article) %></td>
+    <td><%= link_to "Delete", artical_path(article), method: :delete, data:{
+      turbo_confirm: "are you sure?",
+      turbo_method: :delete,
+
+    } %></td>
+   </tr>
+  <% end %>
+</tbody>
+</table>
+
