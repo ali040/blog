@@ -9,7 +9,7 @@ class ArticalsController < ApplicationController
     @articals = Artical.new(artical_prams)
     if @articals.save
       flash[:success] = "Object successfully created"
-      redirect_to articals_path
+      redirect_to articals_path, notice: "Artical successfully created"
     else
       flash[:error] = "Something went wrong"
       render "new"
@@ -17,26 +17,26 @@ class ArticalsController < ApplicationController
   end
 
   def show
-    @artical = Artical.find(params[:id])
+    @articals = Artical.find(params[:id])
   end
   def edit
-    @artical = Artical.find(params[:id])
+    @articals = Artical.find(params[:id])
   end
   def update
-    @aritical = Artical.find(params[:id])
-    if @aritical.update(artical_prams)
+    @articals = Artical.find(params[:id])
+    if @articals.update(artical_prams)
       flash[:success] = "Object was successfully updated"
-      redirect_to artical_path(@aritical)
+      redirect_to artical_path(@articals) ,notice: "Artical was successfully updated"
     else
       flash[:error] = "Something went wrong"
       render "edit"
     end
   end
   def destroy
-    @aritical = Artical.find(params[:id])
-    if @aritical.destroy
+    @articals = Artical.find(params[:id])
+    if @articals.destroy
       flash[:success] = "Object was successfully deleted."
-      redirect_to articals_path
+      redirect_to articals_path, notice: "Artical was successfully deleted."
     else
       flash[:error] = "Something went wrong"
       redirect_to articals_path
